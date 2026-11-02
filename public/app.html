@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Image Folder</title>
+<link rel="stylesheet" href="/style.css">
+</head>
+<body>
+<div class="shell">
+  <main>
+    <div class="folder">
+      <div class="folder-tab">📁 Images</div>
+      <div class="folder-body">
+        <div class="drop" id="drop" tabindex="0" role="button" aria-label="Upload images">
+          <strong>Drop images here or click to upload</strong>
+          <span>PNG, JPG, GIF or WebP · up to 8 MB each</span>
+        </div>
+        <input type="file" id="file" accept="image/png,image/jpeg,image/gif,image/webp" multiple hidden>
+        <p class="status" id="status" role="status"></p>
+        <div class="grid" id="grid"></div>
+        <p class="empty" id="empty" hidden>This folder is empty.</p>
+      </div>
+    </div>
+  </main>
+  <footer>
+    <button class="logout" id="logout">Log out</button>
+  </footer>
+</div>
+<script src="/app.js"></script>
+</body>
+</html>

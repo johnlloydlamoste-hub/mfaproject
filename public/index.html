@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Sign in · Image Folder</title>
+<link rel="stylesheet" href="/style.css">
+</head>
+<body>
+<div class="center">
+  <div class="card">
+    <!-- Step 1: credentials -->
+    <section id="creds">
+      <h1>Image Folder</h1>
+      <p class="sub">Sign in with your password, then your authenticator code.</p>
+      <div class="tabs" role="tablist">
+        <button type="button" role="tab" id="tab-in" aria-selected="true">Sign in</button>
+        <button type="button" role="tab" id="tab-up" aria-selected="false">Create account</button>
+      </div>
+      <form id="credsForm" autocomplete="on">
+        <label for="u">Username</label>
+        <input id="u" name="username" autocomplete="username" required minlength="3" maxlength="32">
+        <label for="p">Password</label>
+        <input id="p" name="password" type="password" autocomplete="current-password" required minlength="8">
+        <p class="error" id="e1" role="alert"></p>
+        <button class="btn" id="go1">Continue</button>
+      </form>
+    </section>
+
+    <!-- Step 2a: enrol authenticator (new accounts) -->
+    <section id="setup" hidden>
+      <h1>Set up MFA</h1>
+      <p class="sub">Link an authenticator app (Google Authenticator, Microsoft Authenticator, Authy…).</p>
+      <ol class="steps"><li>Scan the QR code, or type the key below.</li><li>Enter the 6-digit code the app shows.</li></ol>
+      <div class="qr"><img id="qr" alt="QR code for your authenticator app" hidden></div>
+      <div class="secret" id="secret"></div>
+      <form id="setupForm">
+        <label for="c1">6-digit code</label>
+        <input id="c1" class="code" inputmode="numeric" pattern="\d{6}" maxlength="6" autocomplete="one-time-code" required>
+        <p class="error" id="e2" role="alert"></p>
+        <button class="btn">Verify &amp; finish</button>
+      </form>
+    </section>
+
+    <!-- Step 2b: second factor -->
+    <section id="mfa" hidden>
+      <h1>Two-step verification</h1>
+      <p class="sub">Enter the 6-digit code from your authenticator app.</p>
+      <form id="mfaForm">
+        <label for="c2">6-digit code</label>
+        <input id="c2" class="code" inputmode="numeric" pattern="\d{6}" maxlength="6" autocomplete="one-time-code" required>
+        <p class="error" id="e3" role="alert"></p>
+        <button class="btn">Verify</button>
+      </form>
+      <button class="link" id="back" type="button">Back to sign in</button>
+    </section>
+  </div>
+</div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcode-generator/1.4.4/qrcode.min.js"></script>
+<script src="/login.js"></script>
+</body>
+</html>
